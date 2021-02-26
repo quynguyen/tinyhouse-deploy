@@ -1,0 +1,11 @@
+{
+  "name": "tinyhouse-deploy",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "12.21.0"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
