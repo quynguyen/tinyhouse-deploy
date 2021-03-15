@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb_1 = require("mongodb");
 const api_1 = require("../../../lib/api");
 const utils_1 = require("../../../lib/utils");
+const millisecondsPerDay = 86400000;
 const resolveBookingsIndex = (bookingsIndex, checkInDate, checkOutDate) => {
     let dateCursor = new Date(checkInDate);
     let checkOut = new Date(checkOutDate);
@@ -53,8 +54,15 @@ exports.bookingResolvers = {
                 if (listing.host === viewer._id) {
                     throw new Error("viewer can't book own listing");
                 }
+                const today = new Date();
                 const checkInDate = new Date(checkIn);
                 const checkOutDate = new Date(checkOut);
+                if (checkInDate.getTime() > today.getTime() + 90 * millisecondsPerDay) {
+                    throw new Error("check in date can't be more than 90 days from today");
+                }
+                if (checkOutDate.getTime() > today.getTime() + 90 * millisecondsPerDay) {
+                    throw new Error("check out date can't be more than 90 days from today");
+                }
                 if (checkOutDate < checkInDate) {
                     throw new Error("check out date can't be before check in date");
                 }
