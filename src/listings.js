@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listings = void 0;
 exports.listings = [
     {
         id: "001",

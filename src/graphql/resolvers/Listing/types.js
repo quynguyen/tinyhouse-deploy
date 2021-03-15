@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListingsFilter = void 0;
 var ListingsFilter;
 (function (ListingsFilter) {
     ListingsFilter["PRICE_LOW_TO_HIGH"] = "PRICE_LOW_TO_HIGH";
